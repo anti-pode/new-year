@@ -1,5 +1,6 @@
 {
-  "name": "advent-calendar",
+  "name": "new-year",
+  "author": "anti_pode",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host",
