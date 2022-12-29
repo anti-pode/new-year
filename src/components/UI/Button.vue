@@ -26,7 +26,7 @@ export default defineComponent({
     },
     href: {
       type: String,
-      required: true,
+      default: "",
     },
     type: {
       type: String as PropType<ButtonTypes>,
@@ -40,13 +40,20 @@ export default defineComponent({
       type: String as PropType<ButtonColors>,
       default: ButtonColors.Primary,
     },
+    isSubmit: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup() {},
 });
 </script>
 
 <template>
-  <a :href="href" :class="['btn', type, color, size]" target="_blank" rel="noreferrer nofollow"
+  <button v-if="isSubmit" :class="['btn', type, color, size]" type="submit">
+    <span>{{ text }}</span>
+  </button>
+  <a v-else :href="href" :class="['btn', type, color, size]" target="_blank" rel="noreferrer nofollow"
     ><span>{{ text }}</span></a
   >
 </template>
@@ -64,7 +71,8 @@ export default defineComponent({
   border-radius: 3px;
   background: transparent;
   cursor: pointer;
-  font-weight: 300;
+  font-family: $font-title;
+  font-weight: 500;
   font-size: 18px;
   transition: background-color 0.3s ease;
   text-decoration: none;

@@ -1,31 +1,11 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 
-import AppCalendar from "@/components/Calendar/Calendar.vue";
 import AppPlayer from "@/components/UI/Player.vue";
-
-// import mockItems from "@/api/items";
-import type { IItem } from "@/api/items.types";
+import AppForm from "@/components/UI/Form.vue";
 
 export default defineComponent({
-  components: { AppCalendar, AppPlayer },
-  setup() {
-    const items = ref<IItem[] | null>(null);
-
-    onMounted(async () => {
-      const _items = await fetch("https://otkazniki.ru/api/advent/", {
-        headers: new Headers({
-          "Content-Type": "application/json",
-        }),
-      });
-
-      items.value = await _items.json();
-    });
-
-    return {
-      items,
-    };
-  },
+  components: { AppForm, AppPlayer },
 });
 </script>
 
@@ -33,7 +13,7 @@ export default defineComponent({
   <div id="#app">
     <section class="container">
       <div class="container__content">
-        <h1 class="container__title">Поздравляем вас с новым <span>2023 годом!</span></h1>
+        <h1 class="container__title">Поздравляем вас с&nbsp;новым <span>2023 годом!</span></h1>
 
         <div class="container__description">
           Тут будет краткий вводный текст про поздравление от&nbsp;Лены и&nbsp;общие слова про новый год.
@@ -41,9 +21,9 @@ export default defineComponent({
         </div>
 
         <AppPlayer src="/src/assets/media/1.mp4" />
-      </div>
 
-      <AppCalendar v-if="items && items.length > 0" :items="items" />
+        <AppForm />
+      </div>
     </section>
   </div>
 </template>

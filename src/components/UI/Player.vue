@@ -24,6 +24,7 @@ export default defineComponent({
   width: 100%;
 
   video {
+    display: block;
     width: 100%;
   }
 }
