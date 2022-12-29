@@ -5,7 +5,7 @@
 @import "fonts";
 
 body {
-  background-color: $app-background;
+  background: $app-background url("@/assets/icons/background/snow.svg") no-repeat top center / 100%;
   font-family: $font-main;
   color: $color-text;
   font-size: 16px;
