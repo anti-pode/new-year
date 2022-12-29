@@ -8,11 +8,7 @@ body {
   background: $app-background url("@/assets/icons/background/snow.svg") no-repeat top center / 100%;
   font-family: $font-main;
   color: $color-text;
-  font-size: 16px;
-
-  @include --mobile {
-    font-size: 14px;
-  }
+  font-size: 18px;
 
   &.overflow-hidden {
     padding-right: 5px;

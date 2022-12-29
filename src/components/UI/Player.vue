@@ -20,8 +20,15 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/breakpoints";
+
 .video {
   width: 100%;
+
+  @include --mobile {
+    width: calc(100% + 48px);
+    margin-left: -24px;
+  }
 
   video {
     display: block;

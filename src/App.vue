@@ -24,6 +24,14 @@ export default defineComponent({
             И&nbsp;указание что ниже - кнопка для получение подарочка.
           </div>
 
+          <div class="main-content__aside _mobile">
+            <img src="@/assets/images/tree.png" alt="" />
+
+            <div class="santa">
+              <img src="@/assets/images/santa-mobile.png" alt="" />
+            </div>
+          </div>
+
           <AppPlayer src="/src/assets/media/1.mp4" />
 
           <AppForm />
@@ -34,10 +42,6 @@ export default defineComponent({
         </div>
       </div>
     </section>
-
-    <div class="santa">
-      <img src="@/assets/images/santa.png" alt="" />
-    </div>
   </div>
 </template>
 
@@ -59,23 +63,61 @@ export default defineComponent({
     transform: translateX(-50%);
     pointer-events: none;
     content: "";
+
+    @include --mobile {
+      top: 33px;
+      width: 351px;
+      height: 422px;
+      background-image: url("@/assets/images/stars-mobile.png");
+    }
   }
 
   .main-content {
     display: flex;
 
+    @include --tablet {
+      flex-direction: column;
+    }
+
     &__container {
       flex-shrink: 0;
       max-width: 722px;
+
+      @include --tablet {
+        max-width: 100%;
+      }
     }
 
     &__aside {
+      position: relative;
       flex-shrink: 0;
       width: 493px;
       height: 903px;
       margin-left: -15px;
 
-      img {
+      &._mobile {
+        display: none;
+
+        @include --mobile {
+          display: block;
+          width: calc(100% + 48px);
+          margin-left: -24px;
+          margin-bottom: -30px;
+          height: 553px;
+        }
+
+        > img {
+          width: 300px;
+        }
+      }
+
+      &:not(._mobile) {
+        @include --tablet {
+          display: none;
+        }
+      }
+
+      > img {
         display: block;
         width: 100%;
         height: 100%;
@@ -88,9 +130,19 @@ export default defineComponent({
       font-size: 72px;
       line-height: 100%;
 
+      @include --mobile {
+        font-size: 48px;
+        text-align: center;
+      }
+
       span {
         font-family: $font-italic;
         font-weight: 300;
+
+        @include --mobile {
+          font-size: 62px;
+          line-height: 1.3;
+        }
       }
     }
 
@@ -101,6 +153,10 @@ export default defineComponent({
       font-weight: 500;
       font-size: 18px;
       line-height: 20px;
+
+      @include --mobile {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -108,6 +164,12 @@ export default defineComponent({
     position: absolute;
     bottom: 0;
     left: 0;
+
+    @include --mobile {
+      bottom: -70px;
+      left: auto;
+      right: 0;
+    }
 
     img {
       display: block;

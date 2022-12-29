@@ -138,7 +138,7 @@ export default defineComponent({
   @include --mobile-sm {
     width: 100%;
     padding: 11px 24px;
-    border-radius: 10px;
+    border-radius: 3px;
     font-size: 16px;
   }
 }

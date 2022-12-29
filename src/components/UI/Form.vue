@@ -57,9 +57,21 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/breakpoints";
+
 .form {
   display: flex;
   margin-top: 39px;
+
+  @include --tablet {
+    margin-bottom: 90px;
+  }
+
+  @include --mobile {
+    flex-direction: column;
+    margin-top: 34px;
+    margin-bottom: 60px;
+  }
 
   .input {
     position: relative;
@@ -73,6 +85,11 @@ export default defineComponent({
     background-color: #fff;
     border: 1px solid #c0c4cb;
     border-radius: 3px;
+
+    @include --mobile {
+      width: 100%;
+      margin: 0 0 25px 0;
+    }
 
     input {
       width: 100%;
@@ -100,8 +117,14 @@ export default defineComponent({
   }
 
   .btn {
-    padding-top: 0;
-    padding-bottom: 0;
+    @include --from-mobile {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    @include --mobile {
+      height: 56px;
+    }
   }
 }
 </style>

@@ -8,11 +8,14 @@ export default defineComponent({
 
 <template>
   <header class="header">
-    <img src="@/assets/icons/logo.svg" alt="" />
+    <img class="desktop" src="@/assets/icons/logo.svg" alt="" />
+    <img class="mobile" src="@/assets/icons/logo-mobile.svg" alt="" />
   </header>
 </template>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/breakpoints";
+
 .header {
   position: relative;
   display: flex;
@@ -21,7 +24,15 @@ export default defineComponent({
   width: 756px;
   height: 266px;
   margin: 16px auto -21px;
-  background-image: url("@/assets/images/header.png");
+  background: url("@/assets/images/header.png") no-repeat top center / 100%;
+
+  @include --mobile {
+    width: 283px;
+    height: 128px;
+    margin-top: 5px;
+    margin-bottom: 18px;
+    background-image: url("@/assets/images/header-mobile.png");
+  }
 
   &::before {
     position: absolute;
@@ -32,10 +43,27 @@ export default defineComponent({
     background: #000000;
     transform: translateX(-50vw);
     content: "";
+
+    @include --mobile {
+      top: 9px;
+    }
   }
 
-  img {
+  .desktop {
+    width: 211px;
     margin-bottom: 63px;
+
+    @include --mobile {
+      display: none;
+    }
+  }
+
+  .mobile {
+    width: 135px;
+
+    @include --from-mobile {
+      display: none;
+    }
   }
 }
 </style>
